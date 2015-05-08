@@ -49,5 +49,6 @@ Voer de volgende opdrachten uit in de ontwikkeltools van de browser. Zie XXX waa
 Andere opdrachten:
 
 * voeg een extra button toe in het html-bestand. Geef deze button een naam.
-* voeg een handler toe aan deze button waarmee je de inleiding onzichtbaar kunt maken.
+* maak een handler voor deze button waarmee je de inleiding onzichtbaar kunt maken.
     * gebruik hiervoor de style-property `display`, met als mogelijke waarden `none` - niet zichtbaar, en `block`, wat de normale waarde is voor een p-element. `display` heeft ook een mogelijke waarde `inline`, maar die is hiet niet van belang.
+* koppel deze handler aan de button (`onclick` property). 
