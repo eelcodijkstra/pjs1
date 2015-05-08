@@ -14,11 +14,18 @@ Elk HTML-element uit het HTML-document vind je terug in de DOM. Om vanuit JavaSc
 
 Door middel van `document.getElementById("inleiding")` krijgen we het object in de DOM dat overeenkomt met het HTML-element met `id="inleiding"` (als dat er is). Dit object heeft als properties onder andere de attributen van het element.
 
-Je kunt een attribuut `attr` ook opvragen met: `elt.getAttribute("attr")`. Je kunt het veranderen met: `elt.setAttribute("attr", value)`, waarbij `value` een stringwaarde is 
+Je kunt een attribuut `attr` ook opvragen met: `elt.getAttribute("attr")`. Je kunt het veranderen met: `elt.setAttribute("attr", value)`, waarbij `value` een stringwaarde is.
+
+> Met `getAttribute` en `setAttribute` heb je meer mogelijkheden dan met de object-properties. Je kunt ook je eigen attributen toevoegen. HTML heeft daarvoor een speciale conventie: attribuutnamen die beginnen met data- leveren nooit een conflict met de html-attributen.
 
 De waarde van een attribuut is altijd een string, ook als dit een getal of een boolean waarde voorstelt. Dit betekent dat je soms moet zorgen voor de omzetting van of naar het juiste JavaScript-type.
 
-Eén van de attributen is `style`: deze heeft als 
+Eén van de attributen is `style`: deze heeft onder andere als 
+
+Voor meer informatie: 
+
+* [MDN DOM](https://developer.mozilla.org/en-US/docs/Web/API/Document_Object_Model)
+* [MDN DOM Element](https://developer.mozilla.org/en-US/docs/Web/API/Element)
 
 ## DOM: een boomstructuur
 
@@ -38,3 +45,9 @@ Voer de volgende opdrachten uit in de ontwikkeltools van de browser. Zie XXX waa
 2. bekijk de DOM-representatie. Je kunt onderdelen hiervan in- en uitvouwen (folding): dat is handig als je met een groot document te maken hebt. Als je in de DOM-representatie een bepaald element selecteert, zie je dit in het browser-venster aangegeven.
 3. ga naar het console-venster. Daar kun je de waarde van `document` opvragen.
 4. vraag de waarde van `inleidingElt` op: dit is een variabele die in het eigen script gedefinieerd is. Verander de kleur van de letters.
+
+Andere opdrachten:
+
+* voeg een extra button toe in het html-bestand. Geef deze button een naam.
+* voeg een handler toe aan deze button waarmee je de inleiding onzichtbaar kunt maken.
+    * gebruik hiervoor de style-property `display`, met als mogelijke waarden `none` - niet zichtbaar, en `block`, wat de normale waarde is voor een p-element. `display` heeft ook een mogelijke waarde `inline`, maar die is hiet niet van belang.
