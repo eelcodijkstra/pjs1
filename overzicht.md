@@ -11,6 +11,10 @@ Met deze module hebben we de volgende doelen:
 
 ### Manier van werken
 
+* leren gebruiken van tools - zoals browser tools; git;
+* leren opzoeken van detail-informatie, bijv. via MDN, DevDocs
+* Test Driven Development???
+
 ### Nadruk op concepten
 
 Een belangrijk doel van deze module is het vergroten van conceptuele kennis en vaardigheden. Deze vormen de basis voor het uitbreiden van je kennis in andere omgevingen.
