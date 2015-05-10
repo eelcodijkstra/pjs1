@@ -13,3 +13,15 @@ function textHandler() {
 }
 
 inTextElt.onchange = textHandler;
+
+var formElt = document.getElementById("myForm");
+
+function radioHandler() {
+  var sugar = formElt.elements["sugar"].checked;
+  var milk = formElt.elements["milk"].checked;
+  alert("pizza selection: " + formElt.elements["pizza"].value + "\n" +
+        "coffee with sugar: " + sugar + "\n" +
+         "coffee with milk: " + milk);
+}
+
+formElt.onchange = radioHandler;
