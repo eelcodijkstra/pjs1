@@ -25,3 +25,56 @@ function radioHandler() {
 }
 
 formElt.onchange = radioHandler;
+
+var todoItem = {open: true, text: "T.B.D."};
+var todoList = [];
+
+function addItem(txt) {
+  todoList.push({open: true, text: txt});
+}
+
+function nest(tag, attrs, cont) {
+  var res = "<" + tag + ">\n  ";
+  res = res + cont;
+  return res + "</" + tag + ">\n";
+}
+
+function single(tag, attrs) {
+  var res = "<" + tag + " " + attrs + ">\n  ";
+  return res;
+}
+
+function renderList() {
+  var listElt = document.getElementById("myList");
+  var html = "";
+  var item = "";
+  var i = 0;
+  for (i = 0; i < todoList.length; i = i + 1) {
+    item = single('input', 'type="checkbox"');
+    html = html + nest("li", "", item + todoList[i].text + "\n");
+  }
+  html = nest("ul", "", html);
+  alert(html);
+  listElt.innerHTML = html;
+}
+
+function testList() {
+  renderList();
+  addItem("item 1");
+  renderList();
+  addItem("item2");
+  renderList();
+}
+
+testList();
+
+function addHandler() {
+  addItem("item " + (todoList.length + 1));
+  renderList();
+}
+
+var buttonElt = document.getElementById("addButton");
+
+buttonElt.onclick = addHandler;
+
+
