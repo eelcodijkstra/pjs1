@@ -51,7 +51,8 @@ function renderList() {
   var i = 0;
   for (i = 0; i < todoList.length; i = i + 1) {
     item = single('input', 'type="checkbox"');
-    html = html + nest("li", "", item + todoList[i].text + "\n");
+    item = nest("label", "", item + todoList[i].text + "\n");
+    html = html + nest("li", "", item + "\n");
   }
   html = nest("ul", "", html);
   alert(html);

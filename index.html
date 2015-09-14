@@ -11,7 +11,7 @@
       <br> <br>
       <input type="radio" name="pizza" value="QS"> Quatro Stagioni <br>
       <input type="radio" name="pizza" value="NP"> Napolitana <br>
-      <input type="radio"  name="pizza" value="BL" checked=""> Bolognese <br>
+      <input type="radio"  name="pizza" value="BL" checked="checked"> Bolognese <br>
       <br>
       <label>
         <input type="checkbox" name="sugar" value="Suiker"> Suiker
@@ -20,10 +20,10 @@
         <input type="checkbox" name="milk" value="Melk"> Melk
       </label> <br> <br>
       <label for="fruitSel">Select some fruit:</label>
-      <select id="fruitSel" name="fruit">
-        <option>Banana</option>
-        <option>Cherry</option>
-        <option>Lemon</option>
+      <select id="fruitSel" name="fruit" multiple>
+        <option value="B-fruit">Banana</option>
+        <option value="C-fruit" selected>Cherry</option>
+        <option value="L-fruit">Lemon</option>
       </select>
     </form>
 
