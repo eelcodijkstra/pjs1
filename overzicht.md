@@ -47,3 +47,6 @@ Een resultaat is dat we een groot aantal lessen krijgen. De meeste lessen kun je
 
 ## Les 4: Veranderen van de DOM
 
+## Les 5:
+
+
