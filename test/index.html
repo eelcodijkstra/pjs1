@@ -1,0 +1,36 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Les 2</title>
+  </head>
+  <body>
+    <h1> les 2 </h1>
+
+    <form id="myForm">
+      <input type="text" id="inText" name="myText" value="type something here">
+      <br> <br>
+      <input type="radio" name="pizza" value="QS"> Quatro Stagioni <br>
+      <input type="radio" name="pizza" value="NP"> Napolitana <br>
+      <input type="radio"  name="pizza" value="BL" checked="checked"> Bolognese <br>
+      <br>
+      <label>
+        <input type="checkbox" name="sugar" value="Suiker"> Suiker
+      </label> <br>
+      <label>
+        <input type="checkbox" name="milk" value="Melk"> Melk
+      </label> <br> <br>
+      <label for="fruitSel">Select some fruit:</label>
+      <select id="fruitSel" name="fruit" multiple>
+        <option value="B-fruit">Banana</option>
+        <option value="C-fruit" selected>Cherry</option>
+        <option value="L-fruit">Lemon</option>
+      </select>
+    </form>
+
+    <div id="myList">
+    </div>
+    <br>
+    <button id="addButton">Add item</button>
+    <script src="myscript.js"></script>
+  </body>
+</html>
