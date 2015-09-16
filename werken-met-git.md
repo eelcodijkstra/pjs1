@@ -1,6 +1,17 @@
 # Manier van werken met git en GitHub
 
-Voor deze lessen werken we met 
+Voor deze lessen werken we met git en GitHub. Je kunt dit gebruiken om je software met anderen te delen: je kunt samen met andere aan dezelfde software werken. In deze lessen gebruiken we dit vooral om je code door anderen te laten bekijken. Je levert je uitwerkingen in via git en GitHub, en je kijgt ook feedback via GitHub.
+
+### Module git-0 als voorkennis
+
+In de module git-0 leer je werken met git en GitHub. Je kunt die module eerst doen, of tegelijkertijd met deze module.
+
+### Aanpassen van de bestanden en testen van de software
+
+GitHub gebruiken we alleen voor het opslaan van de bestanden "in the cloud". Voor het aanpassen van je bestanden, en voor het testen van je code, heb je twee mogelijkheden:
+
+* je werkt op je eigen computer. In dit geval is de editor Brackets een handige keuze. Deze heeft veel voorzieningen om met html, css en javascript om te gaan. En door de git-plugin hoef je niet met "git op de commandline" te werken.
+* je werkt met Cloud9. Je hebt dan een omgeving voor het bewerken van je bestanden, en voor het uittesten van je code, "in the cloud". Dit heeft onder andere als voordeel dat je direct je apps kunt uittesten in het publieke internet. Bovendien kun je met anderen samenwerken alsof je achter hetzelfde scherm zit.
 
 ## Map voor elke les
 
