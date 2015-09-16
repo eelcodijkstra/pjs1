@@ -1,5 +1,7 @@
 # Manier van werken met git en GitHub
 
+Voor deze lessen werken we met 
+
 ## Map voor elke les
 
 We gebruiken voor elke les een aparte map.
