@@ -2,14 +2,14 @@
 
 Een input element definieert een naam-waarde paar. De naam hiervan is het `name`-attribuut van het element, de waarde het `value`-attribuut.
 
-> De rol van het `id`-attribuut is voor de identificatie van het element; het `name`-attribuut wordt gebruikt voor input-elementen. Verwar deze attributen niet.
+> Het `id`-attribuut identificeert het html-element. Het `name`-attribuut wordt gebruikt voor input-elementen, om naam-waarde paren te maken. Verwar deze attributen niet.
 
 Een input-element heeft geen afsluitende tag.
 
 Er zijn allerlei verschillende soorten inputs. Enkele van de meest gebruikte zijn:
 
 * text: een korte tekst (een of enkele woorden);
-    * voor langere teksten kun je het `textarea` element gebruiken.
+    * voor langere teksten gebruik je het `textarea` element.
 * radiobutton: een aantal alternatieven waarvan er precies één geselecteerd kan worden. Als je een alternatief selecteert, wordt de vorige selectie ongedaan gemaakt.
 * 
 
