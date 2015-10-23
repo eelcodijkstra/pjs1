@@ -30,7 +30,21 @@ function buttonCHandler() {
   divA.innerHTML = txt + "<p>...etcetera...</p>";
 }
 
-buttonA.onclick = buttonAHandler;
-buttonB.onclick = buttonBHandler;
-buttonC.onclick = buttonCHandler;
+function genericHandler(evt) {
+  alert(evt.target.id);
+  if (evt.target.id === "buttonA") {
+    buttonAHandler();
+  } else if (evt.target.id === "buttonB") {
+    buttonBHandler();
+  } else if (evt.target.id === "buttonC") {
+    buttonCHandler();
+  }
+}
 
+// buttonA.onclick = buttonAHandler;
+// buttonB.onclick = buttonBHandler;
+// buttonC.onclick = buttonCHandler;
+
+buttonA.onclick = genericHandler;
+buttonB.onclick = genericHandler;
+buttonC.onclick = genericHandler;
