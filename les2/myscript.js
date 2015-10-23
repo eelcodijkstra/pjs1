@@ -2,8 +2,6 @@
     alert, confirm, console, Debug, opera, prompt, WSH
 */
 
-alert("hi there - les 2");
-
 var inTextElt = document.getElementById("inText");
 
 function textHandler() {
