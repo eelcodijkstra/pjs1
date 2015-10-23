@@ -2,8 +2,6 @@
     alert, confirm, console, Debug, opera, prompt, WSH
 */
 
-alert("Les 1: DOM");
-
 var inleidingElt = document.getElementById("inleiding");
 var buttonElt = document.getElementById("myButton");
 
