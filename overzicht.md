@@ -43,10 +43,10 @@ Een resultaat is dat we een groot aantal lessen krijgen. De meeste lessen kun je
 
 ## Les 2: Input elementen
 
-## Les 3: Events
+## Les 3: Events en event-handling
 
 ## Les 4: Veranderen van de DOM
 
-## Les 5:
+## Les 5: Bewaren van gegevens (localStorage)
 
 
