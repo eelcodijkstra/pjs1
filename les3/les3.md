@@ -17,7 +17,7 @@ Door middel van de eigenschap `elt.innerHTML` kun je de inhoud van element `elt`
 
 Hint: bekijk de DOM-representatie van het div-element `divA` nadat je dit uitgebreid hebt via `buttonC`.
 
-
+De html-string die je opgeeft moet voldoen aan de html-syntax. Dit betekent dat je de tags goed afsluit, enz. In het bijzonder moet je er rekening mee houden dat tekens die in html een bijzondere betekenis hebben, zoals `<` en `>`, zo genoteerd worden als je in een html-bestand zou doen (bijvoorbeeld: `&gt;` en `&lt`).
 
 ### Gebruik van DOM-representatie
 
