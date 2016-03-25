@@ -9,8 +9,11 @@ We gebruiken de MVC-aanpak voor deze toepassing:
 Een todo-element bevat de volgende properties:
 
 * `done` (boolean)
-* `text` (string)
+* `description` (string)
 
+Bovendien heeft een todo-element een unieke identificatie. Deze gebruiken we o.a. bij de communicatie met de server. Deze identificatie hebben we ook nodig voor de koppeling tussen de DOM (HTML) en de JS-toestand.
+
+> We laten nog even in het midden waar we die identificatie aanmaken. Als we een server gebruiken kan het nodig zijn om die identificatie bij de server aan te maken. (cf. REST interface.)
 
 ```js
 var
@@ -21,11 +24,18 @@ function mkTodoElt() {
 
 ```
 
-We hebben de volgende functies op de todo-lijst nodig:
+We hebben de volgende functies op de todo-lijst (en elementen) nodig:
 
 * `newTodoElt(done, text)`
 * `setDone(elt)`
 * `setUndone(elt)`
+* `setDescription(elt, text)`
+
+We moeten ook elementen kunnen verwijderen.
+
+> We kunnen dit vormgeven als een CRUD interface. Hoe geven we de update vorm?
+
+> Als we dit definiëren als methods van een object, dan hoeven we het element zelf niet als parameter mee te geven.
 
 Voor het vertonen van de juiste selectie van elementen:
 
@@ -70,4 +80,32 @@ Vaak wordt dit gebruikt als een verzameling opties. In dat geval wordt voor de v
 
 ## Objecten?
 
-Voor het aanmaken van objecten gebruiken we de methode van xxx. We maken in een functie een lokaal object, met de nodige operaties. Als resultaat leveren we een array van operaties op.
+Voor het aanmaken van objecten gebruiken we de methode van Douglas Crockford. We maken in een functie een lokaal object, met de nodige operaties. Als resultaat leveren we een array van operaties op. Deze hebben impliciet het object in hun context.
+
+> We maken hierbij geen classes aan, met instanties; we maken alleen instanties.
+
+### Frameworks
+
+We willen voor deze voorbeelden geen gebruik maken van frameworks. Maar we willen wel een eerste idee hebben hoe e.e.a. eruit zou zien bij gebruik van een bepaald framework.
+
+#### React
+
+De React-aanpak maakt geen gebruik van templates; de DOM-componenten worden vanuit JS aangemaakt.
+
+> Kunnen we onze aanpak afstemmen op die van React? (Het is waarschijnlijk niet mogelijk, maar ook niet nodig, om direct al de efficiëntie van React te bieden.)
+
+#### Elm
+
+En hoe vergelijkt dit met de Elm-aanpak?
+
+#### Meteor
+
+Meteor maakt wel gebruik van templates.
+
+#### MVC
+
+* model: de eigenlijke data
+    * bij een verandering van de data voert het model een broadcast uit naar alle views;
+* view: een representatie van de data op het scherm ("rendering").
+    * bij ontvangst van de genoemde broadcast haalt de view de relevante data op van het model.
+    

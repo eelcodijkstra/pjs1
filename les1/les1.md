@@ -14,13 +14,18 @@ Elk HTML-element uit het HTML-document vind je terug in de DOM. Om vanuit JavaSc
 
 Door middel van `document.getElementById("inleiding")` krijgen we het object in de DOM dat overeenkomt met het HTML-element met `id="inleiding"` (als dat er is). Dit object heeft als properties onder andere de attributen van het element.
 
+| HTML      | DOM - functie          | JavaScript       |
+| :---      | :---                   | :---             |
+| element   | `getElementById(id)`   | object           |
+| attribuut | `elt.getAttribute(nm)` | property         |
+
 Je kunt een attribuut `attr` ook opvragen met: `elt.getAttribute("attr")`. Je kunt het veranderen met: `elt.setAttribute("attr", value)`, waarbij `value` een stringwaarde is.
 
 > Met `getAttribute` en `setAttribute` heb je meer mogelijkheden dan met de object-properties. Je kunt ook je eigen attributen toevoegen. HTML heeft daarvoor een speciale conventie: attribuutnamen die beginnen met data- leveren nooit een conflict met de html-attributen.
 
-De waarde van een attribuut is altijd een string, ook als dit een getal of een boolean waarde voorstelt. Dit betekent dat je soms moet zorgen voor de omzetting van of naar het juiste JavaScript-type.
+De waarde van een attribuut is *altijd een string*, ook als dit een getal of een boolean waarde voorstelt. Dit betekent dat je soms moet zorgen voor de omzetting van of naar het juiste JavaScript-type.
 
-Eén van de attributen is `style`: deze heeft onder andere als 
+Eén van de attributen is `style`: dit is een object met daarin de CSS-properties. Deze kun je als een JavaScript-object behandelen, bijvoorbeeld: `elt.style.color = "red";`
 
 Voor meer informatie: 
 
