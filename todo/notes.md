@@ -94,6 +94,8 @@ De React-aanpak maakt geen gebruik van templates; de DOM-componenten worden vanu
 
 > Kunnen we onze aanpak afstemmen op die van React? (Het is waarschijnlijk niet mogelijk, maar ook niet nodig, om direct al de efficiëntie van React te bieden.)
 
+React wordt gewoonlijk gecombineerd met de "flow" architectuur. In dat geval is vinden alle veranderingen plaats door middel van een "dispatcher" waar de modellen (stores) zich op kunnen abonneren. Elke actie wordt in principe aan elk model doorgegeven. Als een model verandert, dan geeft het model dit door aan de afhankelijke views (hoe geef je die afhankelijkheden weer?) Deze vragen dan de veranderingen/nieuwe toestand op bij de betreffende store, en passen de weergave op het scherm aan.
+
 #### Elm
 
 En hoe vergelijkt dit met de Elm-aanpak?
@@ -109,3 +111,10 @@ Meteor maakt wel gebruik van templates.
 * view: een representatie van de data op het scherm ("rendering").
     * bij ontvangst van de genoemde broadcast haalt de view de relevante data op van het model.
     
+## Opmerkingen
+
+Een checkbox is alleen aangevinkt als het input-element het attribuut `checked` bevat. Omdat we html-teksten aanmaken, en geen DOM-elementen, is het relatief lastig om dit attribuut later toe te voegen: eigenlijk moeten we bij de constructie daarmee rekening houden.
+
+> En wat is de betekenis van het value-attribuut voor een checkbox? Moet dat niet altijd hetzelfde zijn - d.w.z., niet beslist een boolean waarde `True`/`False`?
+
+
