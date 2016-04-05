@@ -18,10 +18,10 @@ function testTodoList() {
   createTodo(true, "Huiswerk maken");
 }
 
-// rendering
+// rendering/view
 
-function mkElt(tag, content) {
-  var html = "<" + tag + ">" + content + "</" + tag + ">";
+function mkElt(tag, attrs, content) {
+  var html = "<" + tag + " " + attrs + ">" + content + "</" + tag + ">";
   return html;
 }
 
@@ -49,10 +49,21 @@ function mkTodos(todoList) {
   for (i = 0; i < todoList.length; i++) {
     var todo = todoList[i]
     var todoElt = mkCheckboxElt(todo.id, todo.done);
-    todoElt = todoElt + mkElt("span", todo.text) + "<br>";
+    todoElt = todoElt +
+      mkElt("span", 'id="text-' + todo.id + '"', todo.text) +
+      "<br>";
     html = html + todoElt;
   }
   return html;
+}
+
+function createTodoHandler () {
+  var todoForm = document.getElementById("createTodoForm");
+  var todoText = todoForm.text.value;
+  var todoDone = todoForm.done.checked;
+  createTodo(todoDone, todoText);
+  todoForm.text.value = "";
+  todoForm.done.checked = false;
 }
 
 var todoDiv = document.getElementById("todoDiv");
@@ -63,4 +74,24 @@ function renderTodos(todoList) {
 
 todoDiv.innerHTML = mkTodos(todos);
 
+var createTodoButton = document.getElementById("createTodoButton");
+
+createTodoButton.onclick = createTodoHandler;
+
 testTodoList();
+
+todoDiv.onclick = todoListHandler
+
+function todoListHandler(evt) {
+  alert("elt-tag: " + evt.target.nodeName + " id: " + evt.target.id);
+  if (evt.target.nodeName == 'INPUT' && evt.target.id.startsWith("id-")) {
+    var nr = parseInt(evt.target.id.slice(3));
+    todos[nr].done = evt.target.checked;
+    renderTodos(todos);
+  } else if (evt.target.nodeName == 'SPAN' && evt.target.id.startsWith("text-")) {
+    alert("change text" + evt.target.id.slice(5));
+    var i = parseInt(evt.target.id.slice(5));
+     todos[i].text = todos[i].text + "..";
+     renderTodos(todos);
+  }
+}
