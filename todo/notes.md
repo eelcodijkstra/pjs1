@@ -117,4 +117,8 @@ Een checkbox is alleen aangevinkt als het input-element het attribuut `checked` 
 
 > En wat is de betekenis van het value-attribuut voor een checkbox? Moet dat niet altijd hetzelfde zijn - d.w.z., niet beslist een boolean waarde `True`/`False`?
 
+### Incrementele rendering?
 
+De simplistische manier van aanpassen en renderen van de todo-list betekent dat bij het opbouwen van de lijst, deze bij elk element dat toegevoegd wordt, opnieuw helemaal gerenderd wordt. Je hebt liever een incrementele aanpak, waarbij alleen die delen die veranderen opnieuw gerenderd worden.
+
+Heeft het zin om in het model voor elk onderdeel eventueel bij te houden wat de rendering daarvan is (en wat als er meerdere views zijn op een onderdeel/model?).

@@ -1,17 +1,24 @@
 
-var
-  todo = new Array();
+// model of todo-element and todo-list
 
-function mkTodo(done, text) {
-  todo.push({done: done, text: text});
+var todos  = new Array();  // start as empty list
+var nextId = 0;            // id of next elt to be created
+
+function createTodo(done, text) {
+  todos.push({id: nextId, done: done, text: text});
+  nextId += 1;
+  renderTodos(todos); // signal view(s)
 }
 
-function mkTestDone() {
-  todo = new Array();
-  mkTodo(false, "Boodschappen bij Jumbo");
-  mkTodo(false, "Rekening elektra betalen");
-  mkTodo(true, "Huiswerk maken");
+// test
+
+function testTodoList() {
+  createTodo(false, "Boodschappen bij Jumbo");
+  createTodo(false, "Rekening elektra betalen");
+  createTodo(true, "Huiswerk maken");
 }
+
+// rendering
 
 function mkElt(tag, content) {
   var html = "<" + tag + ">" + content + "</" + tag + ">";
@@ -26,22 +33,34 @@ function mkInputElt(type, name, value) {
   return html;
 }
 
-function mkCheckboxElt(nr) {
-  return mkInputElt("checkbox", "done-" + nr, todo[nr].done);
+function mkCheckboxElt(nr, done) {
+  var html = '<input type="checkbox" id="id-' + nr +
+      '" name="done-' + nr +
+      '" value="' + done + '" ';
+  if (done) {
+    html = html + 'checked ';
+  }
+  html = html + '>'
+  return html;
 }
 
-function mkTodoList() {
+function mkTodos(todoList) {
   var html = "";
-  for (i = 0; i < todo.length; i++) {
-    var todoElt = mkCheckboxElt(i);
-    todoElt = todoElt + mkElt("span", todo[i].text) + "<br>";
+  for (i = 0; i < todoList.length; i++) {
+    var todo = todoList[i]
+    var todoElt = mkCheckboxElt(todo.id, todo.done);
+    todoElt = todoElt + mkElt("span", todo.text) + "<br>";
     html = html + todoElt;
   }
   return html;
 }
 
 var todoDiv = document.getElementById("todoDiv");
-mkTestDone();
 
-todoDiv.innerHTML = mkTodoList();
+function renderTodos(todoList) {
+  todoDiv.innerHTML = mkTodos(todoList);
+}
 
+todoDiv.innerHTML = mkTodos(todos);
+
+testTodoList();
