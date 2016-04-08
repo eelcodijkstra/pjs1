@@ -122,3 +122,14 @@ Een checkbox is alleen aangevinkt als het input-element het attribuut `checked` 
 De simplistische manier van aanpassen en renderen van de todo-list betekent dat bij het opbouwen van de lijst, deze bij elk element dat toegevoegd wordt, opnieuw helemaal gerenderd wordt. Je hebt liever een incrementele aanpak, waarbij alleen die delen die veranderen opnieuw gerenderd worden.
 
 Heeft het zin om in het model voor elk onderdeel eventueel bij te houden wat de rendering daarvan is (en wat als er meerdere views zijn op een onderdeel/model?).
+
+### HTML vs. DOM elementen
+
+We kunnen voor een view eerst de HTML-code genereren, en deze later inpassen in de DOM - bijvoorbeeld via `elt.innerHTML`.
+
+Een andere aanpak is om direct de DOM-nodes te genereren, als afzonderlijke deelboom, en deze vervolgens in te passen in de DOM. (Dit interface is iets ingewikkelder - maar niet heel veel lastiger.)
+
+In het eerste geval kunnen we eventuele eventhandlers en andere code pas aanmaken als de HTML-code in de DOM ingevoegd is.
+
+In het tweede geval kunnen we al direct de eventhandlers toevoegen aan de afzonderlijke deelboom.
+

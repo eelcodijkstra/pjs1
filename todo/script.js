@@ -10,6 +10,36 @@ function createTodo(done, text) {
   renderTodos(todos); // signal view(s)
 }
 
+function todoIndex(id) {
+  return todos.findIndex(function (elt) {
+    return elt.id == id;
+  });
+}
+
+function todoElt(id) {
+  var i = todoIndex(id);
+  return todos[i];
+}
+
+function updateTodo(id, done, text) {
+  var i = todoIndex(id);
+  todos[i].done = done;
+  todos[i].text = text;
+  renderTodos(todos);
+}
+
+function updateTodoDone(id, done) {
+  var i = todoIndex(id);
+  todos[i].done = done;
+  renderTodos(todos);
+}
+
+function updateTodoText(id, text) {
+  var i = todoIndex(id);
+  todos[i].text = text;
+  renderTodos(todos);
+}
+
 // test
 
 function testTodoList() {
@@ -80,18 +110,36 @@ createTodoButton.onclick = createTodoHandler;
 
 testTodoList();
 
-todoDiv.onclick = todoListHandler
+todoDiv.onclick = todoClickHandler;
 
-function todoListHandler(evt) {
-  alert("elt-tag: " + evt.target.nodeName + " id: " + evt.target.id);
+function textChangeHandler(evt) {
+  var txt = evt.target.value;
+  var idx = evt.target.dataset.id;
+  // alert("data-id: " + idx);
+  updateTodoText(idx, evt.target.value);
+}
+
+function textDeselectHandler(evt) {
+  //alert('blur');
+  renderTodos(todos);
+}
+
+function todoClickHandler(evt) {
+  // alert("elt-tag: " + evt.target.nodeName + " id: " + evt.target.id);
   if (evt.target.nodeName == 'INPUT' && evt.target.id.startsWith("id-")) {
     var nr = parseInt(evt.target.id.slice(3));
-    todos[nr].done = evt.target.checked;
-    renderTodos(todos);
+    updateTodoDone(nr, evt.target.checked);
   } else if (evt.target.nodeName == 'SPAN' && evt.target.id.startsWith("text-")) {
-    alert("change text" + evt.target.id.slice(5));
-    var i = parseInt(evt.target.id.slice(5));
-     todos[i].text = todos[i].text + "..";
-     renderTodos(todos);
+    // alert("change text" + evt.target.id.slice(5));
+    var id = parseInt(evt.target.id.slice(5));
+    var html = '<input type="text" name="text" value="' +
+        todoElt(id).text + '" data-id="' + id + '">';
+    evt.target.innerHTML = html;
+    inputElt = evt.target.firstElementChild;
+    inputElt.focus();
+    inputElt.onchange = textChangeHandler;
+    inputElt.onblur = textDeselectHandler;
+  } else {
+    renderTodos(todos);
   }
 }
