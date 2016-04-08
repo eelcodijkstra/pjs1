@@ -140,3 +140,19 @@ Het is misschien handiger om eerst een eenvoudige versie van de todo-list te mak
 ### Delete todo item
 
 Een todo-element heeft een button(o.i.d.) voor het verwijderen van het element.
+
+### Meerdere stappen
+
+We ontwikkelen de todo-toepassing in een aantal stappen:
+
+1. toevoegen en verwijderen van items; markeren als "done";
+2. veranderen van de tekst van een item;
+3. lokaal opslaan van de lijst van items;
+4. synchroniseren met een server van de lijst met items.
+
+(We proberen de moeilijkheden geleidelijk te introduceren. E.e.a. is wat ingewikkelder dan ik eerst ingeschat had.)
+
+Een open vraag: hoeveel rekening houden we met de efficiëntie van de MVC update? Een eenvoudige oplossing is om alles opnieuw te renderen, maar dat geeft voor mijn gevoel niet het juiste voorbeeld.
+
+NB: de voorbeelden op GitHub, van de Todo, zijn vooral ook bedoeld om te laten zien hoe goed bepaalde frameworks zijn. Ze zijn minder geschikt voor het illustreren van de manieren waarop je de met "kaal" JS en HTML kunt doen.
+

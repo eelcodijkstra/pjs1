@@ -10,33 +10,27 @@ function createTodo(done, text) {
   renderTodos(todos); // signal view(s)
 }
 
-function todoIndex(id) {
-  return todos.findIndex(function (elt) {
+function todoElt(id) {
+  var i = todos.findIndex(function (elt) {
     return elt.id == id;
   });
-}
-
-function todoElt(id) {
-  var i = todoIndex(id);
   return todos[i];
 }
 
 function updateTodo(id, done, text) {
-  var i = todoIndex(id);
-  todos[i].done = done;
-  todos[i].text = text;
+  var todo = todoElt(id);
+  todo.done = done;
+  todo.text = text;
   renderTodos(todos);
 }
 
 function updateTodoDone(id, done) {
-  var i = todoIndex(id);
-  todos[i].done = done;
+  todoElt(id).done = done;
   renderTodos(todos);
 }
 
 function updateTodoText(id, text) {
-  var i = todoIndex(id);
-  todos[i].text = text;
+  todoElt(id).text = text;
   renderTodos(todos);
 }
 
@@ -55,91 +49,54 @@ function mkElt(tag, attrs, content) {
   return html;
 }
 
-function mkInputElt(type, name, value) {
-  var html = '<input type="' + type +
-      '" id="id-' + name +
+function mkInputElt(type, attrs, name, value) {
+  var html = '<input type="' + type + '" ' +
+      attrs +
       '" name="' + name +
       '" value="' + value + '">';
   return html;
 }
 
-function mkCheckboxElt(nr, done) {
-  var html = '<input type="checkbox" id="id-' + nr +
-      '" name="done-' + nr +
-      '" value="' + done + '" ';
-  if (done) {
-    html = html + 'checked ';
-  }
-  html = html + '>'
-  return html;
+function mkTodoItem(todo) {
+  var checked = (todo.done) ? ' checked ' : '';
+  var contents =
+      mkInputElt('checkbox', checked + ' data-id="' + todo.id + '"',
+                 'done', 'True') +
+      mkElt('span', 'data-id="' + todo.id + '"', todo.text);
+  return mkElt('form', 'class="todo-item" data-id="' + todo.id +'"', contents);
 }
 
 function mkTodos(todoList) {
   var html = "";
   for (i = 0; i < todoList.length; i++) {
-    var todo = todoList[i]
-    var todoElt = mkCheckboxElt(todo.id, todo.done);
-    todoElt = todoElt +
-      mkElt("span", 'id="text-' + todo.id + '"', todo.text) +
-      "<br>";
-    html = html + todoElt;
+    html = html + mkTodoItem(todoList[i]);
   }
   return html;
 }
 
-function createTodoHandler () {
-  var todoForm = document.getElementById("createTodoForm");
-  var todoText = todoForm.text.value;
-  var todoDone = todoForm.done.checked;
-  createTodo(todoDone, todoText);
-  todoForm.text.value = "";
-  todoForm.done.checked = false;
-}
-
 var todoDiv = document.getElementById("todoDiv");
+todoDiv.innerHTML = mkTodos(todos);
 
 function renderTodos(todoList) {
   todoDiv.innerHTML = mkTodos(todoList);
 }
 
-todoDiv.innerHTML = mkTodos(todos);
-
-var createTodoButton = document.getElementById("createTodoButton");
-
-createTodoButton.onclick = createTodoHandler;
-
-testTodoList();
+function todoClickHandler(evt) {
+  if (evt.target.nodeName == 'INPUT' && evt.target.type == 'checkbox') {
+    updateTodoDone(evt.target.dataset.id, evt.target.checked);
+  }
+}
 
 todoDiv.onclick = todoClickHandler;
 
-function textChangeHandler(evt) {
-  var txt = evt.target.value;
-  var idx = evt.target.dataset.id;
-  // alert("data-id: " + idx);
-  updateTodoText(idx, evt.target.value);
+function createTodoHandler () {
+  var todoForm = document.getElementById("createTodoForm");
+  createTodo(todoForm.done.checked, todoForm.text.value);
+  todoForm.text.value = "";
+  todoForm.text.placeholder = "some action";
+  todoForm.done.checked = false;
 }
 
-function textDeselectHandler(evt) {
-  //alert('blur');
-  renderTodos(todos);
-}
+document.getElementById("createTodoButton").onclick = createTodoHandler;
 
-function todoClickHandler(evt) {
-  // alert("elt-tag: " + evt.target.nodeName + " id: " + evt.target.id);
-  if (evt.target.nodeName == 'INPUT' && evt.target.id.startsWith("id-")) {
-    var nr = parseInt(evt.target.id.slice(3));
-    updateTodoDone(nr, evt.target.checked);
-  } else if (evt.target.nodeName == 'SPAN' && evt.target.id.startsWith("text-")) {
-    // alert("change text" + evt.target.id.slice(5));
-    var id = parseInt(evt.target.id.slice(5));
-    var html = '<input type="text" name="text" value="' +
-        todoElt(id).text + '" data-id="' + id + '">';
-    evt.target.innerHTML = html;
-    inputElt = evt.target.firstElementChild;
-    inputElt.focus();
-    inputElt.onchange = textChangeHandler;
-    inputElt.onblur = textDeselectHandler;
-  } else {
-    renderTodos(todos);
-  }
-}
+testTodoList();

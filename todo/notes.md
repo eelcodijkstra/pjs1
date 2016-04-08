@@ -133,3 +133,4 @@ In het eerste geval kunnen we eventuele eventhandlers en andere code pas aanmake
 
 In het tweede geval kunnen we al direct de eventhandlers toevoegen aan de afzonderlijke deelboom.
 
+* We kunnen in voorkomende gevallen ook het `node.parentElement` gebruiken.
