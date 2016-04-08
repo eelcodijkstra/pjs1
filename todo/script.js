@@ -34,6 +34,13 @@ function updateTodoText(id, text) {
   renderTodos(todos);
 }
 
+function removeTodoItem(id) {
+  todos = todos.filter( function (item) {
+    return item.id != id;
+  });
+  renderTodos(todos);
+}
+
 // test
 
 function testTodoList() {
@@ -62,8 +69,9 @@ function mkTodoItem(todo) {
   var contents =
       mkInputElt('checkbox', checked + ' data-id="' + todo.id + '"',
                  'done', 'True') +
-      mkElt('span', 'data-id="' + todo.id + '"', todo.text);
-  return mkElt('form', 'class="todo-item" data-id="' + todo.id +'"', contents);
+      mkElt('span', 'data-id="' + todo.id + '"', todo.text) +
+      mkElt('button', 'data-id="' + todo.id + '"', 'x');
+  return mkElt('div', 'class="todo-item" data-id="' + todo.id +'"', contents);
 }
 
 function mkTodos(todoList) {
@@ -84,6 +92,9 @@ function renderTodos(todoList) {
 function todoClickHandler(evt) {
   if (evt.target.nodeName == 'INPUT' && evt.target.type == 'checkbox') {
     updateTodoDone(evt.target.dataset.id, evt.target.checked);
+  } else if (evt.target.nodeName == 'BUTTON') {
+
+    removeTodoItem(evt.target.dataset.id);
   }
 }
 

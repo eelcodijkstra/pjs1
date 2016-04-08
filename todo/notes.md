@@ -134,3 +134,15 @@ In het eerste geval kunnen we eventuele eventhandlers en andere code pas aanmake
 In het tweede geval kunnen we al direct de eventhandlers toevoegen aan de afzonderlijke deelboom.
 
 * We kunnen in voorkomende gevallen ook het `node.parentElement` gebruiken.
+
+## Gebruik van form
+
+We kunnen forms gebruiken als omvattend element voor een groep input-elementen; we moeten er dan alleen om denken dat dit form niet resulteert in een submit-actie. Hiervoor moet je zoiets toevoegen als in:
+
+```js
+<form onsubmit="myFunction(); return false;">
+<input type="submit" value="Submit">
+</form>
+```
+
+Het is niet voldoende om de `action` en de `method` leeg te laten.
