@@ -86,7 +86,7 @@ var todoDiv = document.getElementById("todoDiv");
 todoDiv.innerHTML = mkTodos(todos);
 
 function renderTodos(todoList) {
-  todoDiv.innerHTML = mkTodos(todoList);
+  todoDiv.innerHTML = mkTodos(selectedItems(todoList));
 }
 
 function todoClickHandler(evt) {
@@ -109,5 +109,42 @@ function createTodoHandler () {
 }
 
 document.getElementById("createTodoButton").onclick = createTodoHandler;
+
+function allItems(todoList) {
+  return todoList;
+}
+
+function openItems(todoList) {
+  return todoList.filter(function (item) {
+    return !item.done;
+  });
+}
+
+function doneItems(todoList) {
+  return todoList.filter(function (item) {
+    return item.done;
+  });
+}
+
+var selectedItems = allItems;
+
+var selectAllButton = document.getElementById("selectAllButton");
+var selectDoneButton = document.getElementById("selectDoneButton");
+var selectOpenButton = document.getElementById("selectOpenButton");
+
+selectAllButton.onclick = function () {
+  selectedItems = allItems;
+  renderTodos(todos);
+}
+
+selectDoneButton.onclick = function () {
+  selectedItems = doneItems;
+  renderTodos(todos);
+}
+
+selectOpenButton.onclick = function () {
+  selectedItems = openItems;
+  renderTodos(todos);
+}
 
 testTodoList();
