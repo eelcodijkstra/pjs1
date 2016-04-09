@@ -84,7 +84,6 @@ function mkTodos(todoList) {
 }
 
 var todoDiv = document.getElementById("todoDiv");
-todoDiv.innerHTML = mkTodos(todos);
 
 function renderTodos(todoList) {
   todoDiv.innerHTML = mkTodos(todoList);
@@ -94,7 +93,6 @@ function todoClickHandler(evt) {
   if (evt.target.nodeName == 'INPUT' && evt.target.type == 'checkbox') {
     updateTodoDone(evt.target.dataset.id, evt.target.checked);
   } else if (evt.target.nodeName == 'BUTTON') {
-
     removeTodoItem(evt.target.dataset.id);
   }
 }
@@ -109,3 +107,4 @@ function createItemHandler(evt) {
 document.getElementById("createItemInput").onchange = createItemHandler;
 
 testTodoList();
+renderTodo(todos);
