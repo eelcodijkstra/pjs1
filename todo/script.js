@@ -101,14 +101,13 @@ function todoClickHandler(evt) {
 
 todoDiv.onclick = todoClickHandler;
 
-function createTodoHandler () {
-  var todoForm = document.getElementById("createTodoForm");
-  createTodo(todoForm.done.checked, todoForm.text.value);
-  todoForm.text.value = "";
-  todoForm.text.placeholder = "some action";
-  todoForm.done.checked = false;
+function createItemHandler(evt) {
+  createTodo(false, evt.target.value);
+  evt.target.value = "";
 }
 
-document.getElementById("createTodoButton").onclick = createTodoHandler;
+document.getElementById("createItemInput").onchange = createItemHandler;
+
+// document.getElementById("createTodoButton").onclick = createTodoHandler;
 
 testTodoList();
