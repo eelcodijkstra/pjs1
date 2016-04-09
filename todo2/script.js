@@ -1,7 +1,8 @@
 
+
 // model of todo-element and todo-list
 
-var todos  = new Array();  // start as empty list
+var todos = [];  // start as empty list
 var nextId = 0;            // id of next elt to be created
 
 function createTodo(done, text) {
@@ -12,7 +13,7 @@ function createTodo(done, text) {
 
 function todoElt(id) {
   var i = todos.findIndex(function (elt) {
-    return elt.id == id;
+    return elt.id === id;
   });
   return todos[i];
 }
@@ -35,8 +36,8 @@ function updateTodoText(id, text) {
 }
 
 function removeTodoItem(id) {
-  todos = todos.filter( function (item) {
-    return item.id != id;
+  todos = todos.filter(function (item) {
+    return item.id !== id;
   });
   renderTodos(todos);
 }
@@ -72,12 +73,13 @@ function mkTodoItem(todo) {
                  'done', 'True') +
       mkElt('span', decoration + ' data-id="' + todo.id + '"', todo.text) +
       mkElt('button', 'data-id="' + todo.id + '"', 'x');
-  return mkElt('div', 'class="todo-item" data-id="' + todo.id +'"', contents);
+  return mkElt('div', 'class="todo-item" data-id="' + todo.id + '"', contents);
 }
 
 function mkTodos(todoList) {
   var html = "";
-  for (i = 0; i < todoList.length; i++) {
+  var i = 0;
+  for (i = 0; i < todoList.length; i += 1) {
     html = html + mkTodoItem(todoList[i]);
   }
   return html;
@@ -91,9 +93,9 @@ function renderTodos(todoList) {
 }
 
 function todoClickHandler(evt) {
-  if (evt.target.nodeName == 'INPUT' && evt.target.type == 'checkbox') {
+  if (evt.target.nodeName === 'INPUT' && evt.target.type === 'checkbox') {
     updateTodoDone(evt.target.dataset.id, evt.target.checked);
-  } else if (evt.target.nodeName == 'BUTTON') {
+  } else if (evt.target.nodeName === 'BUTTON') {
 
     removeTodoItem(evt.target.dataset.id);
   }
@@ -101,7 +103,7 @@ function todoClickHandler(evt) {
 
 todoDiv.onclick = todoClickHandler;
 
-function createTodoHandler () {
+function createTodoHandler() {
   var todoForm = document.getElementById("createTodoForm");
   createTodo(todoForm.done.checked, todoForm.text.value);
   todoForm.text.value = "";
@@ -136,16 +138,16 @@ var selectOpenButton = document.getElementById("selectOpenButton");
 selectAllButton.onclick = function () {
   selectedItems = allItems;
   renderTodos(todos);
-}
+};
 
 selectDoneButton.onclick = function () {
   selectedItems = doneItems;
   renderTodos(todos);
-}
+};
 
 selectOpenButton.onclick = function () {
   selectedItems = openItems;
   renderTodos(todos);
-}
+};
 
 testTodoList();
