@@ -66,10 +66,11 @@ function mkInputElt(type, attrs, name, value) {
 
 function mkTodoItem(todo) {
   var checked = (todo.done) ? ' checked ' : '';
+  var decoration = (todo.done) ? 'style="text-decoration: line-through;"' : '';
   var contents =
       mkInputElt('checkbox', checked + ' data-id="' + todo.id + '"',
                  'done', 'True') +
-      mkElt('span', 'data-id="' + todo.id + '"', todo.text) +
+      mkElt('span', decoration + ' data-id="' + todo.id + '"', todo.text) +
       mkElt('button', 'data-id="' + todo.id + '"', 'x');
   return mkElt('div', 'class="todo-item" data-id="' + todo.id +'"', contents);
 }
