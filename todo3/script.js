@@ -7,6 +7,7 @@ var nextId = 0;            // id of next elt to be created
 function createTodo(done, text) {
   todos.push({id: nextId, done: done, text: text});
   nextId += 1;
+  saveList();
   renderTodos(todos); // signal view(s)
 }
 
@@ -21,16 +22,19 @@ function updateTodo(id, done, text) {
   var todo = todoElt(id);
   todo.done = done;
   todo.text = text;
+  saveList();
   renderTodos(todos);
 }
 
 function updateTodoDone(id, done) {
   todoElt(id).done = done;
+  saveList();
   renderTodos(todos);
 }
 
 function updateTodoText(id, text) {
   todoElt(id).text = text;
+  saveList();
   renderTodos(todos);
 }
 
@@ -38,7 +42,23 @@ function removeTodoItem(id) {
   todos = todos.filter( function (item) {
     return item.id != id;
   });
+  saveList();
   renderTodos(todos);
+}
+
+// Persistence
+
+function initList() {
+  if (localStorage["todoList"]) {
+    todos = JSON.parse(localStorage["todoList"]);
+    renderTodos(todos);
+  } else {
+    testTodoList();
+  }
+}
+
+function saveList() {
+  localStorage["todoList"] = JSON.stringify(todos);
 }
 
 // test
@@ -148,4 +168,4 @@ selectOpenButton.onclick = function () {
   renderTodos(todos);
 }
 
-testTodoList();
+initList();
