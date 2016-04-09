@@ -108,6 +108,4 @@ function createItemHandler(evt) {
 
 document.getElementById("createItemInput").onchange = createItemHandler;
 
-// document.getElementById("createTodoButton").onclick = createTodoHandler;
-
 testTodoList();
